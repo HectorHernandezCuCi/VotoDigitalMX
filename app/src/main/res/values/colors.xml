@@ -1,0 +1,4 @@
+<resources>
+    <color name="colorButtonPressed">#FF4081</color> <!-- Color para el botón presionado -->
+    <color name="colorButtonNormal">#BDBDBD</color> <!-- Color para el botón normal -->
+</resources>
