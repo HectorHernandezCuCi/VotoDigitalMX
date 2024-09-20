@@ -1,4 +1,6 @@
 package com.mx.votodigitalmx;
+import com.mx.votodigitalmx.RegisterPage;
+
 
 import android.widget.TextView;
 import android.widget.Toast;

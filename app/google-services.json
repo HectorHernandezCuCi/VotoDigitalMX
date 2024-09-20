@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "398565213668",
+    "project_id": "votodigitalmx-97aea",
+    "storage_bucket": "votodigitalmx-97aea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398565213668:android:8f939fe4e52d45690b33f1",
+        "android_client_info": {
+          "package_name": "com.mx.votodigitalmx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlW2kvfg4r1-jwgniKhDiCluZ_kCEmZUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

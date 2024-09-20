@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
 
-    <!-- Input Email debajo del texto -->
+    <!-- Input Email -->
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="0dp"
@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <!-- Input Contraseña debajo del texto -->
+    <!-- Input Contraseña -->
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="0dp"
@@ -113,7 +113,7 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
-        app:layout_constraintEnd_toStartOf="@+id/create_account"/>
+        app:layout_constraintEnd_toStartOf="@+id/create_account" />
 
     <TextView
         android:id="@+id/create_account"
@@ -126,6 +126,19 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/create_one"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <!-- TextView para mostrar datos del usuario -->
+    <TextView
+        android:id="@+id/purebaDB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="52dp"
+        android:text="Datos del Usuario"
+        android:textColor="#333"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_one" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
