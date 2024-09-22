@@ -12,9 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterPage extends AppCompatActivity {
-    private EditText nameInput, lastNameInput, idNumberInput;
+    private EditText nameInput, lastNameInput, idNumberInput, maleButton, femaleButton;
     private Button nextButton;
     private FirebaseFirestore db;
+    private String selectedGender = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,26 @@ public class RegisterPage extends AppCompatActivity {
         lastNameInput = findViewById(R.id.lastname_user_input);
         idNumberInput = findViewById(R.id.editTextNumber);
         nextButton = findViewById(R.id.next_button);
+        maleButton = findViewById(R.id.gender_male);
+        femaleButton = findViewById(R.id.gender_female);
+
+        maleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedGender = "Male";
+                maleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonPressed));
+                femaleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonNormal));
+            }
+        });
+
+        femaleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedGender = "female";
+                maleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonPressed));
+                femaleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonNormal));
+            }
+        });
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +68,7 @@ public class RegisterPage extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("lastName", lastName);
                 intent.putExtra("idNumber", idNumber);
+                intent.putExtra("gender", selectedGender);
                 startActivity(intent);
             }
         });
