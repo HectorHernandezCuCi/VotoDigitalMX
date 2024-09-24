@@ -50,8 +50,9 @@ dependencies {
 
     // Agregar las dependencias de Firebase que quieras usar
     implementation("com.google.firebase:firebase-analytics")
-    // Ejemplo: implementation("com.google.firebase:firebase-auth")
     implementation ("com.google.firebase:firebase-auth:21.0.1")
     implementation ("com.google.firebase:firebase-firestore:24.0.0")
 
+    // Agregar Firebase Storage
+    implementation("com.google.firebase:firebase-storage:20.2.0")
 }

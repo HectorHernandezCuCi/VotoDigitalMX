@@ -27,26 +27,36 @@
         <!-- LoginPage -->
         <activity
             android:name=".LoginPage"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!-- Otras actividades -->
+        <activity android:name=".HomePage"/>
         <activity android:name=".RegisterPage"/>
         <activity android:name=".RegisterPage2"/>
+        <activity android:name=".RegisterPage3" />
 
-        <!-- MainActivity como pantalla principal -->
+        <!-- MainActivity sin el filtro MAIN, ya que SplashActivity lo tiene -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <!-- FileProvider para acceso a las fotos tomadas -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
 
 </manifest>

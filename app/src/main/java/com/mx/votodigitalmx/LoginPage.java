@@ -1,22 +1,26 @@
 package com.mx.votodigitalmx;
-import com.mx.votodigitalmx.RegisterPage;
 
-
-import android.widget.TextView;
-import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPage extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,9 @@ public class LoginPage extends AppCompatActivity {
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
         passwordEditText = findViewById(R.id.editTextTextPassword);
         loginButton = findViewById(R.id.loginButton);
+
+        // Obtener la instancia de FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
 
         // Manejamos el clic en el botón de iniciar sesión
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +78,23 @@ public class LoginPage extends AppCompatActivity {
         if (isValid) {
             // Si todos los campos están llenos, puedes continuar con el proceso de inicio de sesión
             Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_SHORT).show();
-            // Aquí puedes agregar la lógica para el inicio de sesión, por ejemplo, llamar a Firebase Authentication
+            loginUser(email, password);  // Llamada a la función para iniciar sesión
         }
+    }
+
+    private void loginUser(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if(task.isSuccessful()){
+                        // Inicio de sesión exitoso
+                        Toast.makeText(LoginPage.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginPage.this, HomePage.class);  // Define el Intent
+                        startActivity(intent);  // Inicia la actividad
+                        finish();  // Cierra la actividad de inicio de sesión
+                    } else {
+                        // Si falla, muestra un mensaje
+                        Toast.makeText(LoginPage.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }

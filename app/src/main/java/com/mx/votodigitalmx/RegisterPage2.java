@@ -1,5 +1,6 @@
 package com.mx.votodigitalmx;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class RegisterPage2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_2); // Asegúrate de que el nombre del layout sea correcto
+        setContentView(R.layout.activity_register_2);
 
         // Inicializa Firestore
         db = FirebaseFirestore.getInstance();
@@ -33,33 +34,34 @@ public class RegisterPage2 extends AppCompatActivity {
         String name = getIntent().getStringExtra("name");
         String lastName = getIntent().getStringExtra("lastName");
         String idNumber = getIntent().getStringExtra("idNumber");
+        String gender = getIntent().getStringExtra("gender");
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = emailInput.getText().toString().trim();
-                String password = passwordInput.getText().toString().trim();
-                String address = addressInput.getText().toString().trim();
+        nextButton.setOnClickListener(v -> {
+            String email = emailInput.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
+            String address = addressInput.getText().toString().trim();
 
-                if (email.isEmpty() || password.isEmpty() || address.isEmpty()) {
-                    Toast.makeText(RegisterPage2.this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Crea el objeto User con todos los datos
-                User user = new User(name, lastName, email, "", idNumber, password, address);
-
-                // Envía el objeto a Firestore
-                db.collection("users")
-                        .add(user)
-                        .addOnSuccessListener(documentReference -> {
-                            Toast.makeText(RegisterPage2.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                            // Redirigir a otra actividad si es necesario
-                        })
-                        .addOnFailureListener(e -> {
-                            Toast.makeText(RegisterPage2.this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        });
+            if (email.isEmpty() || password.isEmpty() || address.isEmpty()) {
+                Toast.makeText(RegisterPage2.this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            // Crea el objeto User
+            User user = new User(name, lastName, email, gender, idNumber, password, address);
+
+            // Envía el objeto a Firestore
+            db.collection("users")
+                    .add(user)
+                    .addOnSuccessListener(documentReference -> {
+                        Toast.makeText(RegisterPage2.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        // Redirige a RegisterPage3
+                        Intent intent = new Intent(RegisterPage2.this, RegisterPage3.class);
+                        intent.putExtra("userId", documentReference.getId());
+                        startActivity(intent);
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(RegisterPage2.this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
         });
     }
 }
