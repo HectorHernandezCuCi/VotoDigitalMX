@@ -14,7 +14,7 @@
         android:layout_marginTop="314dp"
         android:layout_marginEnd="120dp"
         android:layout_marginBottom="398dp"
-        android:text="Bienvenido A Home"
+        android:text="Bienvenido A home"
         android:textColor="#0D0D0D"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
