@@ -33,7 +33,11 @@
         <activity android:name=".HomePage"/>
         <activity android:name=".RegisterPage"/>
         <activity android:name=".RegisterPage2"/>
-        <activity android:name=".RegisterPage3" />
+        <activity
+            android:name=".RegisterPage3"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize" />
+
 
         <!-- MainActivity sin el filtro MAIN, ya que SplashActivity lo tiene -->
         <activity

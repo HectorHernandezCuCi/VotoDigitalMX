@@ -8,13 +8,14 @@ public class User {
     private String address; // Corrige 'adress' a 'address'
     private String gender;
     private String idNumber;
+    private String profileImageUrl; // Agregar este campo
 
     // Constructor vacío requerido para Firestore
     public User() {
     }
 
     // Constructor con parámetros
-    public User(String name, String lastName, String email, String gender, String idNumber, String password, String address) {
+    public User(String name, String lastName, String email, String gender, String idNumber, String password, String address, String profileImageUrl) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -22,6 +23,7 @@ public class User {
         this.idNumber = idNumber;
         this.password = password;
         this.address = address; // Corrige 'adress' a 'address'
+        this.profileImageUrl = profileImageUrl; // Asignar URL de la imagen
     }
 
     // Getters y setters
@@ -79,5 +81,13 @@ public class User {
 
     public void setAddress(String newAddress) { // Corrige 'setAdress' a 'setAddress'
         this.address = newAddress;
+    }
+
+    public String getProfileImageUrl() { // Agregar getter para la URL de la imagen
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) { // Agregar setter para la URL de la imagen
+        this.profileImageUrl = profileImageUrl;
     }
 }
