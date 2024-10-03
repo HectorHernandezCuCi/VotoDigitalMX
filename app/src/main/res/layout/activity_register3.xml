@@ -1,62 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEFEFE">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        tools:ignore="MissingConstraints" />
+    android:background="#FEFEFE"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:padding="16dp"
-        android:text="Para garantizar la seguridad y autenticidad, necesitamos que subas fotos de tu INE (Instituto Nacional Electoral) tanto del frente como del reverso. Esto nos ayuda a verificar tu identidad y confirmar que el documento es válido. Agradecemos tu colaboración para mantener un entorno seguro y confiable."
+        android:text="Para garantizar tu seguridad, tomaremos una foto de tu INE para verificar tu identidad."
         android:textAlignment="center"
-        android:textColor="#333333"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/takeFrontPhotoButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="76dp"
+        android:text="Tomar Foto"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/finishButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/frontImageView"
+        android:layout_width="295dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="Foto Frontal"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <!-- Botón para tomar la foto del frente del INE -->
     <Button
-        android:id="@+id/takeFrontPhotoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tomar Foto Frontal"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/finishButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="76dp"
+        android:text="Finalizar Registro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toEndOf="@+id/takeFrontPhotoButton" />
 
-    <!-- Imagen que mostrará la foto tomada -->
     <ImageView
-        android:id="@+id/frontImageView"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/takeFrontPhotoButton"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="61dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Foto INE Frontal" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
