@@ -28,15 +28,20 @@ public class RegisterPage extends AppCompatActivity {
         // Configurar botones de género
         maleButton.setOnClickListener(view -> {
             selectedGender = "Male";
-            maleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonPressed));
-            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonNormal));
+            maleButton.setSelected(true); // Marcar como seleccionado
+            maleButton.setBackgroundResource(R.drawable.button_selector); // Cambiar el fondo
+            femaleButton.setSelected(false); // Desmarcar el otro
+            femaleButton.setBackgroundResource(R.drawable.button_selector); // Cambiar el fondo
         });
 
         femaleButton.setOnClickListener(view -> {
             selectedGender = "Female";
-            maleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonNormal));
-            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorButtonPressed));
+            femaleButton.setSelected(true); // Marcar como seleccionado
+            femaleButton.setBackgroundResource(R.drawable.button_selector); // Cambiar el fondo
+            maleButton.setSelected(false); // Desmarcar el otro
+            maleButton.setBackgroundResource(R.drawable.button_selector); // Cambiar el fondo
         });
+
 
         // Botón para ir a la siguiente pantalla
         nextButton.setOnClickListener(v -> {
