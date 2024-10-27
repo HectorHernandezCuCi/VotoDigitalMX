@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VotoDigitalMX</string>
+    <string name="alianza">Alianza</string>
+    <string name="pan">PAN</string>
+    <string name="prd">PRD</string>
+    <string name="verde">Verde</string>
 </resources>

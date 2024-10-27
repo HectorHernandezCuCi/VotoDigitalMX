@@ -2,18 +2,138 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".MainActivity">
 
+    <!-- Título -->
     <TextView
+        android:id="@+id/textViewChooseCandidate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Selecciona tu candidato"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="32dp"/>
+
+    <!-- Candidato PAN -->
+    <ImageView
+        android:id="@+id/imagePan"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/pan"
+        app:layout_constraintTop_toBottomOf="@id/textViewChooseCandidate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnVotarCandidatoPan"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/btnVotarCandidatoPan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAN"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="@id/imagePan"
+        app:layout_constraintStart_toEndOf="@id/imagePan"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Candidato PRD -->
+    <ImageView
+        android:id="@+id/imagePrd"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/prd"
+        app:layout_constraintTop_toBottomOf="@id/imagePan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnVotarCandidatoPrd"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/btnVotarCandidatoPrd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PRD"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="@id/imagePrd"
+        app:layout_constraintStart_toEndOf="@id/imagePrd"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Candidato Alianza -->
+    <ImageView
+        android:id="@+id/imageAlianza"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/alianza"
+        app:layout_constraintTop_toBottomOf="@id/imagePrd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnVotarCandidatoAlianza"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/btnVotarCandidatoAlianza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alianza"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="@id/imageAlianza"
+        app:layout_constraintStart_toEndOf="@id/imageAlianza"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Candidato Verde -->
+    <ImageView
+        android:id="@+id/imageVerde"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/verde"
+        app:layout_constraintTop_toBottomOf="@id/imageAlianza"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnVotarCandidatoVerde"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/btnVotarCandidatoVerde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verde"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="@id/imageVerde"
+        app:layout_constraintStart_toEndOf="@id/imageVerde"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Botón Confirmar Voto -->
+    <Button
+        android:id="@+id/btnConfirmarVoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar Voto"
+        android:backgroundTint="#FF5722"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/btnVotarCandidatoVerde"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="16dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
