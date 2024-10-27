@@ -39,6 +39,10 @@ public class HomePage extends AppCompatActivity {
 
         ImageView settingsIcon = findViewById(R.id.settingsIcon);
         ImageView panIcon = findViewById(R.id.pan);
+        ImageView prdIcon = findViewById(R.id.prd);
+        ImageView alianzaIcon = findViewById(R.id.alianza);
+        ImageView verdeIcon = findViewById(R.id.verde);
+
         newsRecyclerView = findViewById(R.id.newsRecyclerView);
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         welcomeTextView = findViewById(R.id.greetingTextView);
@@ -57,6 +61,21 @@ public class HomePage extends AppCompatActivity {
 
         panIcon.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, PanActivity.class);
+            startActivityForResult(intent, SETTINGS_REQUEST_CODE);
+        });
+
+        prdIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, PrdActivity.class);
+            startActivityForResult(intent, SETTINGS_REQUEST_CODE);
+        });
+
+        alianzaIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, AlianzaActivity.class);
+            startActivityForResult(intent, SETTINGS_REQUEST_CODE);
+        });
+
+        verdeIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, VerdeActivity.class);
             startActivityForResult(intent, SETTINGS_REQUEST_CODE);
         });
 
