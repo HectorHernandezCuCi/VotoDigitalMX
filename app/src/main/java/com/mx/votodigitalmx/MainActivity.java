@@ -30,12 +30,17 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         // Configuración de botones de votación y confirmación
-        Button btnVotarCandidato1 = findViewById(R.id.btnVotarCandidato1);
-        Button btnVotarCandidato2 = findViewById(R.id.btnVotarCandidato2);
+        Button btnVotarCandidatoPan = findViewById(R.id.btnVotarCandidatoPan);
+        Button btnVotarCandidatoPrd = findViewById(R.id.btnVotarCandidatoPrd);
+        Button btnVotarCandidatoAlianza = findViewById(R.id.btnVotarCandidatoAlianza);
+        Button btnVotarCandidatoVerde = findViewById(R.id.btnVotarCandidatoVerde);
         btnConfirmarVoto = findViewById(R.id.btnConfirmarVoto);
 
-        btnVotarCandidato1.setOnClickListener(v -> seleccionarCandidato("candidato1"));
-        btnVotarCandidato2.setOnClickListener(v -> seleccionarCandidato("candidato2"));
+        // Asignar listeners a los botones de candidatos
+        btnVotarCandidatoPan.setOnClickListener(v -> seleccionarCandidato("PAN"));
+        btnVotarCandidatoPrd.setOnClickListener(v -> seleccionarCandidato("PRD"));
+        btnVotarCandidatoAlianza.setOnClickListener(v -> seleccionarCandidato("Alianza"));
+        btnVotarCandidatoVerde.setOnClickListener(v -> seleccionarCandidato("Verde"));
         btnConfirmarVoto.setOnClickListener(v -> confirmarVoto());
     }
 
