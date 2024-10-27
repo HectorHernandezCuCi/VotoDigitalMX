@@ -58,6 +58,8 @@ public class RegisterPage3 extends AppCompatActivity {
         // Verificar y solicitar permisos
         checkCameraPermission();
 
+        signInAnonymously();
+
         // Configurar eventos de botones
         configureButtons();
     }
@@ -132,13 +134,35 @@ public class RegisterPage3 extends AppCompatActivity {
     }
 
     private void sendForm() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null) {
-            signInAnonymously();
+        // Obtener datos enviados desde RegisterPage2
+        String email = getIntent().getStringExtra("email");
+        String password = getIntent().getStringExtra("password");
+        String name = getIntent().getStringExtra("name");
+        String lastName = getIntent().getStringExtra("lastName");
+        String gender = getIntent().getStringExtra("gender");
+        String idNumber = getIntent().getStringExtra("idNumber");
+        String address = getIntent().getStringExtra("address");
+
+        if (email != null && password != null) {
+            // Crear el usuario en Firebase Authentication
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                // Registrar datos adicionales en Firestore
+                                saveUserData(user, name, lastName, gender, idNumber, address);
+                            }
+                        } else {
+                            Log.w("RegisterPage3", "Error en la creación de usuario", task.getException());
+                            Toast.makeText(this, "Error al crear usuario: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         } else {
-            saveUserData(currentUser);
+            Toast.makeText(this, "Datos de autenticación faltantes", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void signInAnonymously() {
         mAuth.signInAnonymously()
@@ -146,38 +170,58 @@ public class RegisterPage3 extends AppCompatActivity {
                     if (!task.isSuccessful()) {
                         Log.w("RegisterPage3", "signInAnonymously failed", task.getException());
                         Toast.makeText(this, "Falla en la autenticación anónima", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    if (user != null) {
-                        saveUserData(user);
+                    } else {
+                        Log.d("RegisterPage3", "Inicio de sesión anónimo exitoso");
                     }
                 });
     }
 
-    private void saveUserData(FirebaseUser user) {
+    private void registerUser() {
+        String email = getIntent().getStringExtra("email");
+        String password = getIntent().getStringExtra("password");
+        String name = getIntent().getStringExtra("name");
+        String lastName = getIntent().getStringExtra("lastName");
+        String gender = getIntent().getStringExtra("gender");
+        String idNumber = getIntent().getStringExtra("idNumber");
+        String address = getIntent().getStringExtra("address");
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Usuario registrado y autenticado exitosamente
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        // Llama a saveUserData con todos los parámetros necesarios
+                        saveUserData(user, name, lastName, gender, idNumber, address);
+                    } else {
+                        // Si la autenticación falla, muestra un mensaje de error
+                        Toast.makeText(this, "Error en el registro: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
+    private void saveUserData(FirebaseUser user, String name, String lastName, String gender, String idNumber, String address) {
         User userObject = new User(
-                getIntent().getStringExtra("name"),
-                getIntent().getStringExtra("lastName"),
+                name,
+                lastName,
                 user.getEmail(),
-                getIntent().getStringExtra("gender"),
-                getIntent().getStringExtra("idNumber"),
+                gender,
+                idNumber,
                 getIntent().getStringExtra("password"),
-                getIntent().getStringExtra("address"),
+                address,
                 uploadedImageUri.toString()
         );
 
-        db.collection("users").add(userObject)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(this, "Registro completado", Toast.LENGTH_SHORT).show();
+        db.collection("users").document(user.getUid()).set(userObject)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Registro completado y datos guardados", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, LoginPage.class);
                     startActivity(intent);
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Log.e("RegisterPage3", "Error en el registro: " + e.getMessage());
-                    Toast.makeText(this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("RegisterPage3", "Error al guardar datos: " + e.getMessage());
+                    Toast.makeText(this, "Error al guardar datos: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 }

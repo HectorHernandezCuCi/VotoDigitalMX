@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEFEFE"
+    android:background="#FFFFFF"
     tools:context=".RegisterPage">
 
     <ImageView
@@ -21,71 +21,71 @@
         android:id="@+id/name_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Nombre:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <EditText
         android:id="@+id/name_user_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Ingresa tu nombre"
-        android:textColor="#C9949292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_user"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:padding="8dp"/>
+        android:hint="Ingresa tu nombre"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_user" />
 
     <TextView
         android:id="@+id/lastname_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Apellidos:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_user_input"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintTop_toBottomOf="@id/name_user_input" />
 
     <EditText
         android:id="@+id/lastname_user_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Ingresa tus apellidos"
-        android:textColor="#C9949292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lastname_user"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:padding="8dp"/>
+        android:hint="Ingresa tus apellidos"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lastname_user" />
 
     <TextView
         android:id="@+id/gender_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Sexo:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lastname_user_input"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintTop_toBottomOf="@id/lastname_user_input" />
 
     <Button
         android:id="@+id/gender_male"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_selector"
@@ -96,19 +96,19 @@
 
     <Button
         android:id="@+id/gender_female"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_selector"
         android:text="Femenino"
-        app:layout_constraintStart_toEndOf="@id/gender_male"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gender_user"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toEndOf="@id/gender_male"
+        app:layout_constraintTop_toBottomOf="@id/gender_user" />
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="371dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
@@ -118,12 +118,11 @@
         android:hint="Ingresa tu número de identificación"
         android:inputType="number"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_user"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@id/id_user" />
 
     <TextView
         android:id="@+id/id_user"
@@ -137,7 +136,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gender_male" />
+        app:layout_constraintTop_toBottomOf="@id/gender_male" />
 
     <Button
         android:id="@+id/next_button"

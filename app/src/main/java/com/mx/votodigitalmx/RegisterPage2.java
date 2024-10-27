@@ -15,6 +15,7 @@ public class RegisterPage2 extends AppCompatActivity {
     private Button nextButton;
     private TextView errorMessage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +26,9 @@ public class RegisterPage2 extends AppCompatActivity {
         passwordInput = findViewById(R.id.password_user_input);
         addressInput = findViewById(R.id.adress_user_input);
         nextButton = findViewById(R.id.next_button);
-        errorMessage = findViewById(R.id.error_message); // Referencia al mensaje de error
+        errorMessage = findViewById(R.id.error_message);
 
+        // Configurar el evento de clic del botón "Siguiente"
         nextButton.setOnClickListener(v -> {
             String email = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
@@ -56,11 +58,15 @@ public class RegisterPage2 extends AppCompatActivity {
             // Si no hay errores, ocultar el mensaje de error y continuar
             errorMessage.setVisibility(View.GONE);
 
-            // Pasar datos a la tercera pantalla
+            // Pasar datos a la tercera pantalla sin autenticación
             Intent intent = new Intent(RegisterPage2.this, RegisterPage3.class);
-            intent.putExtra("email", email);
-            intent.putExtra("password", password);
-            intent.putExtra("address", address);
+            intent.putExtra("name", getIntent().getStringExtra("name")); // Trae el nombre de Register 1
+            intent.putExtra("lastName", getIntent().getStringExtra("lastName")); // Trae el apellido de Register 1
+            intent.putExtra("gender", getIntent().getStringExtra("gender")); // Trae el género de Register 1
+            intent.putExtra("idNumber", getIntent().getStringExtra("idNumber")); // Número de identificación ingresado en Register 2
+            intent.putExtra("address", address); // Dirección ingresada en Register 2
+            intent.putExtra("email", email); // Correo electrónico
+            intent.putExtra("password", password); // Contraseña
             startActivity(intent);
         });
     }
