@@ -1,26 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textAlignment="center">
+    android:background="#F5F5F5"
+    tools:context=".HomePage">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Bienvenido a VotoDigitalMX"
+        android:textColor="#333333"
+        android:textSize="28sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/greetingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Hola, "
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewWelcome" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:text="Tu futuro depende de lo que haces hoy."
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greetingTextView" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="147dp"
+        android:text="Partidos políticos"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView3" />
+
+    <ImageButton
+        android:id="@+id/alianza"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        app:srcCompat="@drawable/alianza" />
+
+    <ImageButton
+        android:id="@+id/pan"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="80dp"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/btnIrAMain"
+        app:layout_constraintStart_toEndOf="@id/alianza"
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/pan" />
+
+    <ImageButton
+        android:id="@+id/prd"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="28dp"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/verde"
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        app:srcCompat="@drawable/prd" />
+
+    <ImageButton
+        android:id="@+id/verde"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="30dp"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView3"
+        app:srcCompat="@drawable/verde" />
+
+    <Button
+        android:id="@+id/btnIrAMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Ir a Votaciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pan" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="Últimas Noticias"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnIrAMain" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/newsRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="314dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="398dp"
-        android:text="Bienvenido A home"
-        android:textColor="#0D0D0D"
-        android:textSize="14sp"
+        android:layout_height="280dp"
+        android:layout_marginBottom="32dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/settingsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginStart="368dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/settings" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

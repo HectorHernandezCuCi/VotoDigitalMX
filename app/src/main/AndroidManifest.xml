@@ -31,8 +31,10 @@
 
         <!-- Otras actividades -->
         <activity android:name=".HomePage"/>
+        <activity android:name=".Settings"/>
         <activity android:name=".RegisterPage"/>
         <activity android:name=".RegisterPage2"/>
+        <activity android:name=".activities.PanActivity"/>
         <activity
             android:name=".RegisterPage3"
             android:configChanges="orientation|screenSize"
@@ -62,5 +64,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

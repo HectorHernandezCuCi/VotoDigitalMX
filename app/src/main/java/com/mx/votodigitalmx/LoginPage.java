@@ -8,12 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -82,10 +79,10 @@ public class LoginPage extends AppCompatActivity {
         }
     }
 
-    private void loginUser(String email, String password){
+    private void loginUser(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         // Inicio de sesión exitoso
                         Toast.makeText(LoginPage.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginPage.this, HomePage.class);  // Define el Intent
